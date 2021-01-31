@@ -1,4 +1,4 @@
-ubject,activity,Domain,Instrument,Acceleration,Jerk,Magnitude,Statistic,Axis,count,average
+Subject,activity,Domain,Instrument,Acceleration,Jerk,Magnitude,Statistic,Axis,count,average
 1,LAYING,Time,Accelerometer,Body,NA,NA,Mean,X,50,0.22159824394
 1,LAYING,Time,Accelerometer,Body,NA,NA,Mean,Y,50,-0.0405139534294
 1,LAYING,Time,Accelerometer,Body,NA,NA,Mean,Z,50,-0.11320355358
