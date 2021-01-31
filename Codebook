@@ -1,14 +1,13 @@
 Title
 ========================================================
-
 Codebook
-========
+========================================================
 
 ### Variables in the tidy dataset
-The cleaned dataset contains 11,881 observations of 11 variables and is saved in both `text` 
+The cleaned dataset contains 11,881 observations of 11 variables and it is saved in `text` 
 (`TIDY_HumanActivity.txt`) and `csv` (`TIDY_HumanActivity.csv`) formats. 
 
-`run_analysis.md` or `run_analysis.R` contain details on dataset creation. 
+Please refer `run_analysis.md` or `run_analysis.R` for details on dataset creation. 
 
 
 Variable list and descriptions
@@ -31,8 +30,7 @@ Variable list and descriptions
 
 
 ### TIDY data
-The first few observations of the TIDY dataset are prented below. The 
-`structure` of the data is also shown:
+The first few observations of the TIDY dataset and the structure are presented below
 
 
 ```r
@@ -126,3 +124,4 @@ str(TIDY)
 ##  $ V10: Factor w/ 46 levels "36","38","39",..: 46 13 13 13 13 13 13 13 13 13 ...
 ##  $ V11: Factor w/ 11521 levels "-0.000143542544507042",..: 11521 10985 727 1801 5697 5253 5245 5258 5223 10526 ...
 ```
+
