@@ -1,0 +1,55 @@
+``{r setup, include=FALSE}
+# set global chunk options
+opts_chunk$set(cache=TRUE)
+```
+run_analysis,markdown version
+====================================
+This is the markdown version of the `run_analysis.R` script for conveniece
+
+###Step 0: Read in data
+
+The dataset is downloaded by running `downloadData.R`, which downloads and stores the data locally in the current directory's `UCI HAR Dataset` folder.
+
+```{r downloadData, cache=TRUE}
+if ( !file.exists("UCI HAR Dataset") )  downloadData()
+```
+
+We will be using `data.table`instead of `data.frame`s to speeds up processing
+
+```{r load libraries}
+library(data.table)
+library(reshape2)
+```
+
+```{r readData, cache=TRUE}
+path <- file.path("./", "UCI HAR Dataset")
+list.files(path, recursive = TRUE)
+
+### read the subject files (`subject IDs`):
+DT.subject.ID.Train <- fread(file.path(path, "train", "subject_train.txt"))
+DT.subject.ID.Test <- fread(file.path(path, "test", "subject_test.txt"))
+
+### create datatable from data files
+df <- read.table(file.path(path, "train", "X_train.txt"))
+DT.train <- data.table(df)
+df <- read.table(file.path(path, "test", "X_test.txt"))   
+DT.test <- data.table(df)
+```
+ 
+ ### Step 1: Merge the training and the test sets to create one data set.
+```{r mergeData}
+
+# subject IDs:
+DT.All.subject.IDs <- rbind(DT.subject.ID.Train, DT.subject.ID.Test)
+setnames(DT.All.subject.IDs, "V1", "subject")  #10, 299 total subjects
+
+# labels: 
+DT.All.labels <- rbind(DT.label.Train, DT.label.Test)
+setnames(DT.All.labels, "V1", "activity.label")
+
+# the `train` and `test` dataset:
+DT.Train.and.Test <- rbind(DT.train , DT.test)
+
+# Merging columns of labels:
+DT.All <- cbind(DT.All.subject.IDs, DT.Train.and.Test)
+DT.All <- cbind(DT.All, DT.All.labels)
